@@ -2,7 +2,7 @@ from rest_framework import viewsets, generics, status
 from rest_framework.decorators import action
 from rest_framework.response import Response
 from .models import Category, Product, Order, OrderItem
-from .serializers import CategorySerializer, ProductSerializer, OrderSerializer, RegistrationSerializer
+from .serializers import CategorySerializer, ProductSerializer, OrderSerializer, RegistrationSerializer,UserSerializer
 from django.shortcuts import get_object_or_404
 from rest_framework.permissions import IsAuthenticated, IsAdminUser
 from rest_framework.decorators import api_view, permission_classes
@@ -263,7 +263,10 @@ class RegistrationView(APIView):
         serializer = RegistrationSerializer(data=request.data)
         if serializer.is_valid():
             user = serializer.save()
-            return Response({"detail": "Registered successfully"}, status=status.HTTP_200_RESET_CONTENT)
+            user_data = UserSerializer(user).data
+            return Response({
+                'user':user_data,
+            }, status=status.HTTP_201_CREATED)
 
 
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
@@ -308,7 +311,11 @@ class LoginView(APIView):
         serializer = self.get_serializer(data=request.data)
         try:
             serializer.is_valid(raise_exception=True)
+            user = serializer.save()
+            user_data = UserSerializer(user).data
+            return Response({
+                'user':user_data,
+            }, status=status.HTTP_202_ACCEPTED)
         except:
             return Response({"detail": "Invalid credentials"}, status=status.HTTP_400_BAD_REQUEST)
 
-        return Response(serializer.validated_data, status=status.HTTP_200_OK)
