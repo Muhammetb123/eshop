@@ -1,0 +1,65 @@
+# Flutter
+.dart_tool/
+.flutter-plugins
+.flutter-plugins-dependencies
+.packages
+.vs/
+.idea/
+*.iml
+*.ipr
+*.iws
+build/
+ios/Flutter/Generated.xcconfig
+ios/Flutter/App.framework
+ios/Flutter/Flutter.framework
+ios/Flutter/Flutter.podspec
+ios/Flutter/flutter_assets/
+android/app/src/main/res/raw/
+android/.gradle
+android/local.properties
+android/*.iml
+android/build/
+android/app/build/
+android/app/.cxx/
+android/app/.externalNativeBuild/
+android/app/src/main/java/io/flutter/plugins/
+android/gradlew
+android/gradlew.bat
+android/gradle/wrapper/gradle-wrapper.jar
+# Mac
+.DS_Store
+# Linux
+Thumbs.db
+# Windows
+ehthumbs.db
+
+
+# Django
+*.log
+*.pot
+*.pyc
+__pycache__/
+db.sqlite3
+media/
+static/
+.env
+.venv/
+venv/
+env/
+myenv/
+.vscode/
+.idea/
+# IDE-specific files
+.DS_Store
+Thumbs.db
+# Python-specific files
+*.egg-info/
+.pytest_cache/
+htmlcov/
+.tox/
+# Build artifacts
+dist/
+build/
+# pip-tools
+*.txt
+*.in
