@@ -1,6 +1,5 @@
 from django.db import models
 from django.contrib.auth.models import User
-from django.utils.text import slugify # Import slugify
 
 class Category(models.Model):
     """
@@ -8,7 +7,7 @@ class Category(models.Model):
     """
     name = models.CharField(max_length=255, unique=True, verbose_name="Category Name")
     description = models.TextField(blank=True, verbose_name="Description")
-    
+  
     
     class Meta:
         verbose_name = "Category"
@@ -16,13 +15,6 @@ class Category(models.Model):
 
     def __str__(self):
         return self.name
-
-    # def save(self, *args, **kwargs):
-    #     #  Populate the slug field if it's not already set.
-    #     if not self.slug:
-    #         self.slug = slugify(self.name)  # Import slugify
-    #     super().save(*args, **kwargs)
-    
 
 
 class Product(models.Model):
@@ -46,11 +38,6 @@ class Product(models.Model):
 
     def __str__(self):
         return self.name
-    
-    # def save(self, *args, **kwargs):
-    #     if not self.slug:
-    #         self.slug = slugify(self.name)
-    #     super().save(*args, **kwargs)
 
 class Order(models.Model):
     """
@@ -61,7 +48,6 @@ class Order(models.Model):
     order_date = models.DateTimeField(auto_now_add=True, verbose_name="Order Date")
     is_paid = models.BooleanField(default=False, verbose_name="Is Paid")
     
-    #  Additional order statuses can be added here (e.g., pending, processing, shipped, completed, cancelled)
     STATUS_CHOICES = (
         ('pending', 'Pending'),
         ('processing', 'Processing'),
