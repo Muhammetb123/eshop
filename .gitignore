@@ -9,6 +9,7 @@
 *.ipr
 *.iws
 build/
+
 ios/Flutter/Generated.xcconfig
 ios/Flutter/App.framework
 ios/Flutter/Flutter.framework
