@@ -17,7 +17,7 @@ class _MainPageState extends State<HomePageContent> {
     HomePage(),
     const FavoritePage(),
     const Cartpage(),
-    const AccountPage(),
+     AccountPage(),
   ];
   int _selectedIndex = 0;
 

@@ -11,10 +11,10 @@ class EShop extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      // darkTheme: ThemeData.dark(),
+      debugShowCheckedModeBanner: false,
       home: HomePageContent(),
       theme: ThemeData(
-        appBarTheme: AppBarTheme(backgroundColor: Colors.green),
+        appBarTheme: AppBarTheme(backgroundColor: Colors.amber),
         bottomNavigationBarTheme: BottomNavigationBarThemeData(
           backgroundColor: Colors.white,
         ),
