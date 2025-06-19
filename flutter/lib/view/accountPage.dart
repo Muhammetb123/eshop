@@ -1,3 +1,4 @@
+import 'package:e_commerce/view/complainPage.dart';
 import 'package:e_commerce/view/information.dart';
 import 'package:e_commerce/view/userList.dart';
 import 'package:e_commerce/widgets/customTextField.dart';
@@ -14,6 +15,17 @@ class AccountPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
+        floatingActionButton: FloatingActionButton(
+          onPressed: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => Complainpage(),
+              ),
+            );
+          },
+          child: Icon(Icons.warning),
+        ),
         appBar: AppBar(
           actions: [
             IconButton(

@@ -18,11 +18,13 @@ class Cartpage extends StatelessWidget {
         body: Stack(
           children: [
             ListView.builder(
+              
               itemCount: 20,
               itemBuilder: (context, index) {
                 return Card(
                   color: Colors.white24,
                   child: ListTile(
+
                     leading: Image(
                       image: AssetImage(
                         'assets/images/carrots.jpg',
@@ -34,7 +36,7 @@ class Cartpage extends StatelessWidget {
                           TextStyle(fontSize: 19, fontWeight: FontWeight.bold),
                     ),
                     subtitle: Text(
-                      '1 (TMT)',
+                      '1000 (TMT)',
                       style: TextStyle(fontWeight: FontWeight.bold),
                     ),
                     trailing: Icon(
@@ -52,7 +54,6 @@ class Cartpage extends StatelessWidget {
                   style: ElevatedButton.styleFrom(
                       minimumSize: Size(double.infinity, 50),
                       backgroundColor: Colors.orange
-                      // shape: StadiumBorder(), elevation: 2
                       ),
                   onPressed: () {},
                   child: Text(
