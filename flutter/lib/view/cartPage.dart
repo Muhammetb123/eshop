@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 class Cartpage extends StatelessWidget {
+  
   const Cartpage({super.key});
 
   @override
@@ -18,13 +19,11 @@ class Cartpage extends StatelessWidget {
         body: Stack(
           children: [
             ListView.builder(
-              
               itemCount: 20,
               itemBuilder: (context, index) {
                 return Card(
                   color: Colors.white24,
                   child: ListTile(
-
                     leading: Image(
                       image: AssetImage(
                         'assets/images/carrots.jpg',
@@ -53,8 +52,7 @@ class Cartpage extends StatelessWidget {
                 ElevatedButton(
                   style: ElevatedButton.styleFrom(
                       minimumSize: Size(double.infinity, 50),
-                      backgroundColor: Colors.orange
-                      ),
+                      backgroundColor: Colors.orange),
                   onPressed: () {},
                   child: Text(
                     'Order ->',
