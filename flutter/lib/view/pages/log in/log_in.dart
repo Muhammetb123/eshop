@@ -1,6 +1,6 @@
-import 'package:e_commerce/view/complainPage.dart';
-import 'package:e_commerce/view/information.dart';
-import 'package:e_commerce/view/userList.dart';
+import 'package:e_commerce/view/pages/log%20in/complainPage.dart';
+import 'package:e_commerce/view/pages/log%20in/information.dart';
+import 'package:e_commerce/view/pages/log%20in/userList.dart';
 import 'package:e_commerce/widgets/customTextField.dart';
 import 'package:flutter/material.dart';
 

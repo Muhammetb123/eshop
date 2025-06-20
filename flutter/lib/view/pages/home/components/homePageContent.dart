@@ -1,7 +1,7 @@
-import 'package:e_commerce/view/accountPage.dart';
-import 'package:e_commerce/view/cartPage.dart';
+import 'package:e_commerce/view/pages/log%20in/log_in.dart';
+import 'package:e_commerce/view/pages/cart/cart_page.dart';
 import 'package:e_commerce/view/pages/favorites/favoritePage.dart';
-import 'package:e_commerce/view/pages/home/homePage.dart';
+import 'package:e_commerce/view/pages/home/components/homePage.dart';
 import 'package:flutter/material.dart';
 
 class HomePageContent extends StatefulWidget {
