@@ -1,7 +1,7 @@
+import 'package:e_commerce/view/pages/cart/maglumatlar.dart';
 import 'package:flutter/material.dart';
 
 class Cartpage extends StatelessWidget {
-  
   const Cartpage({super.key});
 
   @override
@@ -9,11 +9,12 @@ class Cartpage extends StatelessWidget {
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(
-          centerTitle: true,
           title: Text(
-            'Order page',
+            'Order',
             style: TextStyle(
-                fontWeight: FontWeight.bold, fontSize: 22, color: Colors.white),
+              fontWeight: FontWeight.bold,
+              fontSize: 22,
+            ),
           ),
         ),
         body: Stack(
@@ -22,25 +23,55 @@ class Cartpage extends StatelessWidget {
               itemCount: 20,
               itemBuilder: (context, index) {
                 return Card(
-                  color: Colors.white24,
-                  child: ListTile(
-                    leading: Image(
-                      image: AssetImage(
-                        'assets/images/carrots.jpg',
-                      ),
-                    ),
-                    title: Text(
-                      'Carrots',
-                      style:
-                          TextStyle(fontSize: 19, fontWeight: FontWeight.bold),
-                    ),
-                    subtitle: Text(
-                      '1000 (TMT)',
-                      style: TextStyle(fontWeight: FontWeight.bold),
-                    ),
-                    trailing: Icon(
-                      Icons.delete,
-                      color: const Color.fromARGB(255, 199, 64, 43),
+                  elevation: 25,
+                  margin: EdgeInsets.symmetric(horizontal: 12, vertical: 10),
+                  child: Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Row(
+                      children: [
+                        Image(
+                          width: 100,
+                          image: AssetImage(
+                            'assets/images/apricots.jpg',
+                          ),
+                        ),
+                        Column(
+                          children: [
+                            Row(
+                              children: [
+                                Text(
+                                  'Name fruit',
+                                  style: TextStyle(
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: 19),
+                                ),
+                                SizedBox(
+                                  width: 80,
+                                ),
+                                IconButton(
+                                    onPressed: () {}, icon: Icon(Icons.close)),
+                              ],
+                            ),
+                            Row(
+                              children: [
+                                Text(
+                                  ' 5 (TMT)',
+                                  style: TextStyle(fontWeight: FontWeight.bold),
+                                ),
+                                SizedBox(
+                                  width: 80,
+                                ),
+                                IconButton(
+                                    onPressed: () {},
+                                    icon: Text(
+                                      'Add to card',
+                                      style: TextStyle(color: Colors.blue),
+                                    )),
+                              ],
+                            )
+                          ],
+                        )
+                      ],
                     ),
                   ),
                 );
@@ -49,17 +80,40 @@ class Cartpage extends StatelessWidget {
             Column(
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
-                ElevatedButton(
-                  style: ElevatedButton.styleFrom(
-                      minimumSize: Size(double.infinity, 50),
-                      backgroundColor: Colors.orange),
-                  onPressed: () {},
-                  child: Text(
-                    'Order ->',
-                    style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                        fontSize: 22,
-                        color: Colors.white),
+                Container(
+                  margin: EdgeInsetsGeometry.all(10),
+                  height: 50,
+                  width: double.infinity,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(12),
+                    color: Colors.indigo,
+                    border: BoxBorder.all(width: 2, color: Colors.deepPurple),
+                  ),
+                  child: GestureDetector(
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => Maglumatlar(),
+                        ),
+                      );
+                    },
+                    child: ListTile(
+                      title: Text(
+                        'Order ->',
+                        style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            fontSize: 22,
+                            color: Colors.black),
+                      ),
+                      trailing: Text(
+                        '60.60 (TMT)',
+                        style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            fontSize: 22,
+                            color: Colors.black),
+                      ),
+                    ),
                   ),
                 ),
               ],

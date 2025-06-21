@@ -14,7 +14,7 @@ class EShop extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       home: HomePageContent(),
       theme: ThemeData(
-        appBarTheme: AppBarTheme(backgroundColor: Colors.blue),
+        // appBarTheme: AppBarTheme(backgroundColor: Colors.blue),
         bottomNavigationBarTheme: BottomNavigationBarThemeData(
           backgroundColor: Colors.white,
         ),

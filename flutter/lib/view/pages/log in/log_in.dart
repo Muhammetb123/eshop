@@ -1,6 +1,6 @@
-import 'package:e_commerce/view/pages/log%20in/complainPage.dart';
 import 'package:e_commerce/view/pages/log%20in/information.dart';
-import 'package:e_commerce/view/pages/log%20in/userList.dart';
+import 'package:e_commerce/view/pages/log%20in/location.dart';
+import 'package:e_commerce/widgets/container_witget.dart';
 import 'package:e_commerce/widgets/customTextField.dart';
 import 'package:flutter/material.dart';
 
@@ -15,92 +15,87 @@ class AccountPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        floatingActionButton: FloatingActionButton(
-          onPressed: () {
-            Navigator.push(
-              context,
-              MaterialPageRoute(
-                builder: (context) => Complainpage(),
-              ),
-            );
-          },
-          child: Icon(Icons.warning),
-        ),
         appBar: AppBar(
-          actions: [
-            IconButton(
-              onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => Userlist(),
-                  ),
-                );
-              },
-              icon: Icon(Icons.menu),
-            )
-          ],
-          centerTitle: true,
           title: Text(
             'Account',
             style: TextStyle(
-                fontWeight: FontWeight.bold, fontSize: 22, color: Colors.white),
+              fontWeight: FontWeight.bold,
+              fontSize: 22,
+            ),
           ),
         ),
-        body: Column(
-          //egerde maglumat bos bolsa su cykmaly egerde maglumat add edilen bolsa onda
-          children: [
-            SizedBox(
-              height: 17,
-            ),
-            CustomTextFild(
-              controller: nameController,
-              label: 'Name',
-            ),
-            SizedBox(
-              height: 20,
-            ),
-            CustomTextFild(
-              controller: numberController,
-              label: 'Phone number',
-            ),
-            SizedBox(
-              height: 10,
-            ),
-            CustomTextFild(
-              label: 'e-mail pocta',
-              controller: emailController,
-            ),
-            SizedBox(
-              height: 10,
-            ),
-            ElevatedButton(
-              style: ElevatedButton.styleFrom(
-                  minimumSize: Size(double.infinity, 50),
-                  shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadiusGeometry.circular(20))),
-              onPressed: () {},
-              child: Text('Add'),
-            ),
-            SizedBox(
-              height: 10,
-            ),
-            ElevatedButton(
-              style: ElevatedButton.styleFrom(
-                  minimumSize: Size(double.infinity, 50),
-                  shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadiusGeometry.circular(20))),
-              onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => Information(),
-                  ),
-                );
-              },
-              child: Text('Information about us'),
-            )
-          ],
+        body: Padding(
+          padding: const EdgeInsets.all(15.0),
+          child: Column(
+            //egerde maglumat bos bolsa su cykmaly egerde maglumat add edilen bolsa onda
+            children: [
+              SizedBox(
+                height: 10,
+              ),
+              CustomTextFild(
+                controller: numberController,
+                label: 'Phone number',
+              ),
+              SizedBox(
+                height: 29,
+              ),
+              CustomTextFild(
+                controller: nameController,
+                label: 'Name',
+              ),
+              SizedBox(
+                height: 15,
+              ),
+              ContainerWitget(
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => Location(),
+                    ),
+                  );
+                },
+                containerName: 'Deliwer',
+                icon: Icons.arrow_forward_ios_outlined,
+              ),
+              SizedBox(
+                height: 15,
+              ),
+              ContainerWitget(
+                containerName: 'Orders',
+                icon: Icons.arrow_forward_ios_outlined,
+              ),
+              SizedBox(
+                height: 15,
+              ),
+              ContainerWitget(
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => Information(),
+                    ),
+                  );
+                },
+                containerName: 'Information about us',
+                icon: Icons.arrow_forward_ios_outlined,
+              ),
+              SizedBox(
+                height: 24,
+              ),
+              ElevatedButton(
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: const Color.fromARGB(255, 15, 83, 139),
+                  shape: RoundedRectangleBorder(),
+                ),
+                onPressed: () {},
+                child: Text(
+                  'Yatda sakla',
+                  style: TextStyle(color: Colors.white),
+                ),
+              )
+            ],
+          ),
         ),
       ),
     );

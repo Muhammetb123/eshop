@@ -7,11 +7,12 @@ class Information extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        centerTitle: true,
         title: Text(
           'Information',
           style: TextStyle(
-              fontWeight: FontWeight.bold, fontSize: 22, color: Colors.white),
+            fontWeight: FontWeight.bold,
+            fontSize: 22,
+          ),
         ),
       ),
       body: Column(
@@ -19,11 +20,19 @@ class Information extends StatelessWidget {
           SizedBox(
             height: 20,
           ),
-          Text(
-            'Contact us service:',
-            style: TextStyle(
-              fontWeight: FontWeight.bold,
-              fontSize: 22,
+          Padding(
+            padding: const EdgeInsets.only(left: 15),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                Text(
+                  'Contact our service:',
+                  style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 22,
+                  ),
+                ),
+              ],
             ),
           ),
           SizedBox(
@@ -37,12 +46,26 @@ class Information extends StatelessWidget {
                 fontSize: 18,
               ),
             ),
-            trailing: Text(
-              '+993 6* ******',
-              style: TextStyle(
-                fontWeight: FontWeight.bold,
-                fontSize: 16,
-              ),
+            trailing: Column(
+              children: [
+                SizedBox(
+                  height: 10,
+                ),
+                Text(
+                  '+993 6* ******',
+                  style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 13,
+                  ),
+                ),
+                Text(
+                  '+993 6* ******',
+                  style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 13,
+                  ),
+                ),
+              ],
             ),
           ),
           SizedBox(
@@ -60,7 +83,7 @@ class Information extends StatelessWidget {
               '+993 6* ******',
               style: TextStyle(
                 fontWeight: FontWeight.bold,
-                fontSize: 16,
+                fontSize: 13,
               ),
             ),
           ),

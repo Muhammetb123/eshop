@@ -1,3 +1,5 @@
+import 'dart:ffi';
+
 import 'package:flutter/material.dart';
 
 class FavoritePage extends StatelessWidget {
@@ -8,33 +10,69 @@ class FavoritePage extends StatelessWidget {
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(
-          actions: [
-            IconButton(
-              onPressed: () {},
-              icon: Icon(Icons.cleaning_services_outlined),
-            )
-          ],
-          centerTitle: true,
+          backgroundColor: Colors.white12,
           title: Text(
             'Favorite page',
             style: TextStyle(fontWeight: FontWeight.bold),
           ),
         ),
-        body: GridView.builder(
-            gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-              crossAxisCount: 2,
-              childAspectRatio: 1.55,
-            ),
-            itemBuilder: (context, index) {
-              return Card(
-                child: ListTile(
-                  title: Image(image: AssetImage('assets/images/carrots.jpg')),
-                  subtitle: Text('Name of products'),
-                  trailing:
-                      IconButton(onPressed: () {}, icon: Icon(Icons.delete)),
+        body: ListView.builder(
+          itemCount: 20,
+          itemBuilder: (context, index) {
+            return Card(
+              elevation: 25,
+              margin: EdgeInsets.symmetric(horizontal: 12, vertical: 10),
+              child: Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Row(
+                  children: [
+                    Image(
+                      width: 100,
+                      image: AssetImage(
+                        'assets/images/apricots.jpg',
+                      ),
+                    ),
+                    Column(
+                      children: [
+                        Row(
+                          children: [
+                            Text(
+                              'Name fruit',
+                              style: TextStyle(
+                                  fontWeight: FontWeight.bold, fontSize: 19),
+                            ),
+                            SizedBox(
+                              width: 80,
+                            ),
+                            IconButton(
+                                onPressed: () {}, icon: Icon(Icons.close)),
+                          ],
+                        ),
+                        Row(
+                          children: [
+                            Text(
+                              ' 5 (TMT)',
+                              style: TextStyle(fontWeight: FontWeight.bold),
+                            ),
+                            SizedBox(
+                              width: 80,
+                            ),
+                            IconButton(
+                                onPressed: () {},
+                                icon: Text(
+                                  'Add to card',
+                                  style: TextStyle(color: Colors.blue),
+                                )),
+                          ],
+                        )
+                      ],
+                    )
+                  ],
                 ),
-              );
-            }),
+              ),
+            );
+          },
+        ),
       ),
     );
   }
