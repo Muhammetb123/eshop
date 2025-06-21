@@ -6,6 +6,15 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    List<String> categoryNames = [
+      "Новые продукты",
+      "Рекомендуемые продукты",
+      "Скидки и акции",
+      "Мясная продукция",
+      "Хлебобулочные изделия",
+      "Макаронные изделия и крупы"
+    ];
+
     List<Map<String, dynamic>> products = [
       {
         "image": "assets/images/walnuts.jpg",
@@ -26,94 +35,126 @@ class HomePage extends StatelessWidget {
     return SafeArea(
       child: Scaffold(
           appBar: AppBar(title: Text('Home page')),
-          body: Column(children: [
+          body: ListView(children: [
             Center(
               child: Image.asset(
                 "assets/images/apple-in-hand.jpg",
               ),
             ),
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            ...categoryNames.map(
+              (e) => Column(
                 children: [
                   Padding(
                     padding: const EdgeInsets.all(8.0),
-                    child: Text(
-                      "Новые продукты", //Title
-                      style: TextStyle(fontSize: 20),
-                    ),
-                  ),
-                  TextButton(
-                    style: ButtonStyle(),
-                    onPressed: () {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => NewProducts(),
-                          ));
-                    },
-                    child: Text(
-                      "Показать все",
-                      style: TextStyle(color: Colors.blue),
-                    ),
-                  ),
-                ],
-              ),
-            ),
-            Expanded(
-              child: ListView.builder(
-                scrollDirection: Axis.horizontal,
-                itemCount: products.length,
-                itemBuilder: (context, index) {
-                  return Card(
-                    child: Column(
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        Stack(
-                          children: [
-                            ClipRRect(
-                              borderRadius: BorderRadiusGeometry.circular(12),
-                              child: Image.asset(
-                                products[index]["image"],
-                                height: 110,
-                                width: 110,
-                              ),
-                            ),
-                            Positioned(
-                              child: Icon(Icons.favorite, color: Colors.red),
-                              top: 8,
-                              right: 8,
-                            ),
-                          ],
-                        ),
                         Padding(
-                          padding: const EdgeInsets.all(0.0),
+                          padding: const EdgeInsets.only(top: 15.0),
+                          child: Container(
+                            width: 200,
+                            child: Text(
+                              e, // Category
+                              style: TextStyle(
+                                  fontSize: 20, fontWeight: FontWeight.w600),
+                            ),
+                          ),
+                        ),
+                        TextButton(
+                          style: ButtonStyle(),
                           child: Text(
-                            products[index]["title"],
-                            // maxLines: 2,
-                            overflow: TextOverflow.ellipsis,
+                            "Показать все",
+                            style: TextStyle(color: Colors.blue),
                           ),
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.symmetric(horizontal: 5.0),
-                          child: Row(
-                            children: [
-                              Text(
-                                products[index]["price"],
-                                // maxLines: 2,
-                                overflow: TextOverflow.ellipsis,
-                              ),
-                            ],
-                          ),
-                        ),
-                        IconButton(
-                          onPressed: () {},
-                          icon: Icon(Icons.shop, size: 10),
+                          onPressed: () {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => NewProducts(),
+                                ));
+                          },
                         ),
                       ],
                     ),
-                  );
-                },
+                  ),
+                  SizedBox(
+                    height: 200,
+                    child: ListView.builder(
+                      scrollDirection: Axis.horizontal,
+                      itemCount: products.length,
+                      itemBuilder: (context, index) {
+                        return SizedBox(
+                          width: 160,
+                          child: Card(
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Stack(
+                                  children: [
+                                    ClipRRect(
+                                      borderRadius:
+                                          BorderRadiusGeometry.circular(12),
+                                      child: Image.asset(
+                                        products[index]["image"],
+                                        // height: 110,
+                                        // width: 110,
+                                      ),
+                                    ),
+                                    Positioned(
+                                        top: 8,
+                                        right: 8,
+                                        height: 33,
+                                        width: 33,
+                                        child: IconButton(
+                                          iconSize: 18,
+                                          style: ButtonStyle(
+                                              backgroundColor:
+                                                  WidgetStateProperty.all(
+                                                      Colors.white),
+                                              elevation:
+                                                  WidgetStateProperty.all(20)),
+                                          onPressed: () {},
+                                          icon: Icon(Icons.add),
+                                        )
+
+                                        // Icon(Icons.add, color: Colors.red),
+                                        ),
+                                  ],
+                                ),
+                                Padding(
+                                  padding: const EdgeInsets.symmetric(
+                                      horizontal: 5.0),
+                                  child: Text(
+                                    products[index]["title"],
+                                    // maxLines: 2,
+                                    overflow: TextOverflow.ellipsis,
+                                  ),
+                                ),
+                                Padding(
+                                  padding: const EdgeInsets.symmetric(
+                                      horizontal: 5.0),
+                                  child: Row(
+                                    children: [
+                                      Text(
+                                        products[index]["price"],
+                                        // maxLines: 2,
+                                        overflow: TextOverflow.ellipsis,
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                                IconButton(
+                                  onPressed: () {},
+                                  icon: Icon(Icons.shop, size: 10),
+                                ),
+                              ],
+                            ),
+                          ),
+                        );
+                      },
+                    ),
+                  ),
+                ],
               ),
             ),
           ])),
