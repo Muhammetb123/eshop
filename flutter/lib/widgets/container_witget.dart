@@ -5,12 +5,12 @@ import 'package:flutter/material.dart';
 class ContainerWitget extends StatelessWidget {
   String containerName;
   void Function()? onTap;
-  IconData icon;
+  IconData? icon;
   ContainerWitget({
     Key? key,
     required this.containerName,
     this.onTap,
-    required this.icon,
+    this.icon,
   }) : super(key: key);
 
   @override

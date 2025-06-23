@@ -1,5 +1,3 @@
-import 'dart:ffi';
-
 import 'package:flutter/material.dart';
 
 class FavoritePage extends StatelessWidget {
@@ -32,40 +30,42 @@ class FavoritePage extends StatelessWidget {
                         'assets/images/apricots.jpg',
                       ),
                     ),
-                    Column(
-                      children: [
-                        Row(
-                          children: [
-                            Text(
-                              'Name fruit',
-                              style: TextStyle(
-                                  fontWeight: FontWeight.bold, fontSize: 19),
-                            ),
-                            SizedBox(
-                              width: 80,
-                            ),
-                            IconButton(
-                                onPressed: () {}, icon: Icon(Icons.close)),
-                          ],
-                        ),
-                        Row(
-                          children: [
-                            Text(
-                              ' 5 (TMT)',
-                              style: TextStyle(fontWeight: FontWeight.bold),
-                            ),
-                            SizedBox(
-                              width: 80,
-                            ),
-                            IconButton(
+                    Expanded(
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Text(
+                                'Name fruit',
+                                style: TextStyle(
+                                    fontWeight: FontWeight.bold, fontSize: 19),
+                              ),
+                              IconButton(
+                                onPressed: () {},
+                                icon: Icon(Icons.close),
+                              ),
+                            ],
+                          ),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Text(
+                                ' 5 (TMT)',
+                                style: TextStyle(fontWeight: FontWeight.bold),
+                              ),
+                              IconButton(
                                 onPressed: () {},
                                 icon: Text(
                                   'Add to card',
                                   style: TextStyle(color: Colors.blue),
-                                )),
-                          ],
-                        )
-                      ],
+                                ),
+                              ),
+                            ],
+                          )
+                        ],
+                      ),
                     )
                   ],
                 ),

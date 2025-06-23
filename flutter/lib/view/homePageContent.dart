@@ -3,6 +3,7 @@ import 'package:e_commerce/view/pages/home/components/home_page.dart';
 import 'package:e_commerce/view/pages/log%20in/log_in.dart';
 import 'package:e_commerce/view/pages/cart/cart_page.dart';
 import 'package:e_commerce/view/pages/favorites/favoritePage.dart';
+import 'package:e_commerce/widgets/container_witget.dart';
 import 'package:flutter/material.dart';
 
 class HomePageContent extends StatefulWidget {
@@ -29,11 +30,12 @@ class _MainPageState extends State<HomePageContent> {
   }
 
   @override
-  Widget build(BuildContext context) {  
+  Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
         body: _pages[_selectedIndex],
         appBar: AppBar(toolbarHeight: 10),
+
         bottomNavigationBar: BottomNavigationBar(
           selectedItemColor: Colors.blue,
           iconSize: 20,
@@ -45,11 +47,11 @@ class _MainPageState extends State<HomePageContent> {
           currentIndex: _selectedIndex,
           onTap: _onItemTapped,
           items: [
-            BottomNavigationBarItem(
-              activeIcon: Icon(Icons.home, color: Colors.blue),
-              label: "Home",
-              icon: Icon(Icons.home, color: Colors.grey),
-            ),
+        BottomNavigationBarItem(
+          activeIcon: Icon(Icons.home, color: Colors.blue),
+          label: "Home",
+          icon: Icon(Icons.home, color: Colors.grey),
+        ),
             BottomNavigationBarItem(
               activeIcon: Icon(Icons.favorite, color: Colors.blue),
               label: "Favorite",

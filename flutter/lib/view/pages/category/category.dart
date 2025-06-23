@@ -10,6 +10,11 @@ class CategoryPage extends StatelessWidget {
         appBar: AppBar(
           title: Text("Category"),
         ),
+        body: ListView(
+          children: [
+            
+          ],
+        )
       ),
     );
   }
