@@ -38,7 +38,7 @@ class FavoritePage extends StatelessWidget {
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
                               Text(
-                                'Name fruit',
+                                'Name fruit apaoko iciesm',
                                 style: TextStyle(
                                     fontWeight: FontWeight.bold, fontSize: 19),
                               ),
@@ -50,15 +50,18 @@ class FavoritePage extends StatelessWidget {
                           ),
                           Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              Text(
-                                ' 5 (TMT)',
-                                style: TextStyle(fontWeight: FontWeight.bold),
+                              Expanded(
+                                child: Text(
+                                  ' 5 (TMT)',
+                                  style: TextStyle(fontWeight: FontWeight.bold),
+                                ),
                               ),
                               IconButton(
                                 onPressed: () {},
                                 icon: Text(
-                                  'Add to card',
+                                  'Add',
                                   style: TextStyle(color: Colors.blue),
                                 ),
                               ),
