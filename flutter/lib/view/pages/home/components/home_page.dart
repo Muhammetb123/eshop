@@ -38,7 +38,7 @@ class HomePage extends StatelessWidget {
           body: ListView(children: [
             Center(
               child: Image.asset(
-                "assets/images/apple-in-hand.jpg",
+                "assets/images/milkshake.jpg",
               ),
             ),
             ...categoryNames.map(
