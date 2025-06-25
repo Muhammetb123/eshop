@@ -1,5 +1,7 @@
+import 'package:e_commerce/providers/provider.dart';
 import 'package:e_commerce/widgets/build_subcategory.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class CategoryPage extends StatelessWidget {
   const CategoryPage({super.key});
@@ -119,6 +121,13 @@ class CategoryPage extends StatelessWidget {
                   BuildSubCategory(title: "Все товары категории"),
                 ],
               ),
+              ExpansionTile(title: Consumer<CategoryProvider>(
+                builder: (context, categoryProvider, child) {
+                  return Text(categoryProvider.categories
+                      .map((category) => category.name)
+                      .join(', '));
+                },
+              ))
             ],
           )),
     );
