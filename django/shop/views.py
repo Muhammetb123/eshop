@@ -1,8 +1,8 @@
 from rest_framework import viewsets, generics, status
 from rest_framework.decorators import action
 from rest_framework.response import Response
-from .models import Category, Product, Order, OrderItem
-from .serializers import CategorySerializer, ProductSerializer, OrderSerializer, RegistrationSerializer,UserSerializer
+from .models import Category, SubCategory, Product, Order, OrderItem
+from .serializers import CategorySerializer, ProductSerializer, OrderSerializer, RegistrationSerializer,UserSerializer, SubCategorySerializer
 from django.shortcuts import get_object_or_404
 from rest_framework.permissions import IsAuthenticated, IsAdminUser
 from rest_framework.decorators import api_view, permission_classes
@@ -10,6 +10,9 @@ from django.db.models import Sum
 from rest_framework.views import APIView
 from drf_yasg.utils import swagger_auto_schema
 from drf_yasg import openapi 
+
+
+
 class CategoryViewSet(viewsets.ModelViewSet):
     """
     ViewSet for managing categories.
@@ -38,12 +41,41 @@ class CategoryViewSet(viewsets.ModelViewSet):
         responses={200: ProductSerializer(many=True)}
     )
     def products(self, request, pk=None):
-        """
-        Endpoint to retrieve products for a specific category.
-        """
         category = self.get_object()
         products = category.products.all()
         serializer = ProductSerializer(products, many=True, context={'request': request})
+        return Response(serializer.data)
+
+class SubCategoryViewSet(viewsets.ModelViewSet):
+
+    queryset = SubCategory.objects.all()
+    serializer_class = SubCategorySerializer
+    
+    @swagger_auto_schema(
+        operation_description="Retrieve a list of all categories",
+        responses={200: SubCategorySerializer(many=True)}
+    )
+    def list(self, request, *args, **kwargs):
+        return super().list(request, *args, **kwargs)
+
+    @swagger_auto_schema(
+        operation_description="Create a new category item",
+        request_body=SubCategorySerializer, # Correctly applied to POST method
+        responses={201: SubCategorySerializer}
+    )
+    def create(self, request, *args, **kwargs):
+        return super().create(request, *args, **kwargs)
+
+    @action(detail=True, methods=['GET'])
+    @swagger_auto_schema(
+        operation_description="Retrieve products for a specific category.",
+        responses={200: SubCategorySerializer(many=True)}
+    )
+    def products(self, request, pk=None):
+
+        category = self.get_object()
+        products = category.products.all()
+        serializer = SubCategorySerializer(products, many=True, context={'request': request})
         return Response(serializer.data)
 
 class ProductViewSet(viewsets.ModelViewSet):

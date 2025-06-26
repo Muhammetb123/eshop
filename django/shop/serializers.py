@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import Category, Product, Order, OrderItem
+from .models import Category, SubCategory, Product, Order, OrderItem
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate
 
@@ -52,6 +52,11 @@ class CategorySerializer(serializers.ModelSerializer):
     class Meta:
         model = Category
         fields = ['id', 'name', 'description']
+        
+class SubCategorySerializer(serializers.ModelSerializer):
+    class Meta:
+        model = SubCategory
+        fields = ['id', 'category', 'name', 'description']
         
 
 class ProductSerializer(serializers.ModelSerializer):

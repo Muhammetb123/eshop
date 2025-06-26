@@ -2,9 +2,6 @@ from django.db import models
 from django.contrib.auth.models import User
 
 class Category(models.Model):
-    """
-    Represents a product category.
-    """
     name = models.CharField(max_length=255, unique=True, verbose_name="Category Name")
     description = models.TextField(blank=True, verbose_name="Description")
   
@@ -17,11 +14,22 @@ class Category(models.Model):
         return self.name
 
 
+
+class SubCategory(models.Model):
+    category = models.ForeignKey('Category', on_delete=models.CASCADE, related_name='category', verbose_name="Category",)
+    name = models.CharField(max_length=255, unique=True, verbose_name="SubCategory Name")
+    description = models.TextField(blank=True, verbose_name="Description")
+  
+    
+    class Meta:
+        verbose_name = "SubCategory"
+        verbose_name_plural = "SubCategories"
+
+    def __str__(self):
+        return self.name
+
 class Product(models.Model):
-    """
-    Represents a product.
-    """
-    category = models.ForeignKey(Category, on_delete=models.CASCADE, related_name='products', verbose_name="Category")
+    sub_category = models.ForeignKey(SubCategory,blank=True, null=True, on_delete=models.CASCADE, related_name='products', verbose_name="Sub Category")
     name = models.CharField(max_length=255, verbose_name="Product Name")
     description = models.TextField(verbose_name="Description")
     price = models.DecimalField(max_digits=10, decimal_places=2, verbose_name="Price")
